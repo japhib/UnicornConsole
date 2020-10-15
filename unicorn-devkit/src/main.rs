@@ -69,7 +69,7 @@ fn main() {
         }
     }
 
-    let mut scale = Scale::Scale1x;
+    let mut scale = Scale::Scale4x;
     if matches.opt_present("s") {
         let value = matches.opt_str("s").unwrap().parse::<i32>().unwrap();
         match value {
