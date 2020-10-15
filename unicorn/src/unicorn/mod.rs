@@ -164,6 +164,7 @@ pub enum UnicornState {
     INTERACTIVE,
 }
 
+#[derive(Debug)]
 pub enum Code {
     UNKNOWN = 0,
     LUA = 1,
@@ -1204,7 +1205,9 @@ impl Unicorn {
 
                 ret = cartridge.python_plugin.load_code(data.clone());
             }
-            _ => (),
+            _ => {
+                info!("[Unicorn] Unknown cartridge type {:?}", cartridge.get_code_type());
+            },
         }
 
         info!("[Unicorn] LOAD CARTRIDGE {:?}", ret);
@@ -1268,7 +1271,7 @@ impl Unicorn {
             self.add_cartridge(unicorn_cartridge);
             self._setup_screen();
 
-            unicorn_cartridge.loaded = true;
+            // unicorn_cartridge.loaded = true;
 
             self.init();
         }
