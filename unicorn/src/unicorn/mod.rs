@@ -192,7 +192,7 @@ pub fn array_to_vec(arr: &[u8]) -> Vec<u8> {
 
 
 pub struct Menu {
-    idx: u32,
+    idx: i32,
 }
 
 impl Menu {
@@ -204,15 +204,15 @@ impl Menu {
 
     pub fn update(&mut self, cartridges: &mut Vec<UnicornCartridge>, players: Arc<Mutex<Players>>) -> bool {
         if players.lock().unwrap().btnp(0, 2) {
-            self.idx = clamp(self.idx - 1, 0, (cartridges.len() as u32) - 1);
+            self.idx = clamp(self.idx - 1, 0, (cartridges.len() as i32) - 1);
         } else if players.lock().unwrap().btnp(0, 3) {
-            self.idx = clamp(self.idx + 1, 0, (cartridges.len() as u32) - 1);
+            self.idx = clamp(self.idx + 1, 0, (cartridges.len() as i32) - 1);
         }
 
         true
     }
 
-    pub fn get_current_idx(&mut self) -> u32 {
+    pub fn get_current_idx(&mut self) -> i32 {
         self.idx
     }
 
@@ -226,9 +226,9 @@ impl Menu {
         let offset_y = 10;
 
         if cartridges.len() > 0 {
-            let mut idx = 0;
-            let min_x = max(self.idx as i32-5, 0) as u32;
-            let max_x = max(self.idx as i32+5, 10) as u32;
+            let mut idx : i32 = 0;
+            let min_x = max(self.idx as i32-5, 0) as i32;
+            let max_x = max(self.idx as i32+5, 10) as i32;
             
             let mut current_idx = 0;
             for cartridge in cartridges.iter_mut() {
