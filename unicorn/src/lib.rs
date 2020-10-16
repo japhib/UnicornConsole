@@ -29,6 +29,7 @@ extern crate libc;
 extern crate glob;
 
 extern crate rusttype;
+extern crate backtrace;
 
 extern crate gapbuffer;
 extern crate unicode_width;

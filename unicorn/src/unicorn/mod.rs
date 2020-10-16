@@ -254,7 +254,7 @@ impl Menu {
 }
 
 pub struct PauseMenu {
-    idx: u32,
+    idx: i32,
     selected_idx: i32,
     items: Vec<String>,
 }
@@ -292,18 +292,19 @@ impl PauseMenu {
     }
 
     pub fn update(&mut self, players: Arc<Mutex<Players>>) -> bool {
-        if players.lock().unwrap().btnp(0, 4) {
+        let plrs = players.lock().unwrap();
+        if plrs.btnp(0, 4) {
             self.selected_idx = self.idx as i32;
             if self.selected_idx == (self.items.len() as i32) - 1 {
                 return false;
             }
         } else {
-            if players.lock().unwrap().btnp(0, 2) {
-                self.idx = clamp(self.idx - 1, 0, (self.items.len() as u32) - 1);
+            if plrs.btnp(0, 2) {
+                self.idx = clamp(self.idx - 1, 0, (self.items.len() as i32) - 1);
             }
 
-            if players.lock().unwrap().btnp(0, 3) {
-                self.idx = clamp(self.idx + 1, 0, (self.items.len() as u32) - 1);
+            if plrs.btnp(0, 3) {
+                self.idx = clamp(self.idx + 1, 0, (self.items.len() as i32) - 1);
             }
         }
 

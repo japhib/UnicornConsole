@@ -352,7 +352,7 @@ impl ProgamValueUnit {
         if self.higlight {
             for key in KEYS_HEXA.iter() {
                 let key = *key;
-                if players.lock().unwrap().btn3(key) {
+                if players.lock().unwrap().btn_raw(key) {
                     self.value = format!("{}", key);
                     self.modified = true;
                 }
@@ -800,7 +800,7 @@ impl SFXEditor {
             let mut idx = 0;
             for key in KEYS_NOTE.iter() {
                 let key = *key;
-                if players.lock().unwrap().btn3(key) || self.pi_key.is_active2(key) {
+                if players.lock().unwrap().btn_raw(key) || self.pi_key.is_active2(key) {
                     let mut res_channel = -1;
                     if let Some(channel) = self.sfx_channels_keys.get_mut(&key) {
                         if *channel == -1 {

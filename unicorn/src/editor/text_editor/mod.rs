@@ -398,7 +398,7 @@ impl Editor {
         self.view.maybe_clear_message();
         // if players
 
-        for (key, value) in &players.akeys_quick {
+        for (key, value) in &players.akeys {
             if *value {
                 let k = Key::from_special_code(*key);
                 self.handle_key_event(screen, k);

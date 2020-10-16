@@ -379,8 +379,8 @@ pub mod plugin {
         Ok(value)
     }
 
-    def btn2(&self, x: i32) -> PyResult<bool> {
-        let value = self.players(py).lock().unwrap().btn2(x);
+    def btn_raw(&self, x: i32) -> PyResult<bool> {
+        let value = self.players(py).lock().unwrap().btn_raw(x);
         Ok(value)
     }
 
@@ -389,8 +389,8 @@ pub mod plugin {
         Ok(value)
     }
 
-    def btnp2(&self, x: i32) -> PyResult<bool> {
-        let value = self.players(py).lock().unwrap().btnp2(x);
+    def btnp_raw(&self, x: i32) -> PyResult<bool> {
+        let value = self.players(py).lock().unwrap().btnp_raw(x);
         Ok(value)
     }
 

@@ -590,13 +590,13 @@ globals()["polygon"] = polygon
 def btn(x, p=0):
     if type(x) == int:
         return unicorn_input.btn(x, p)
-    return unicorn_input.btn2(ord(x))
+    return unicorn_input.btn_raw(ord(x))
 
 
 def btnp(x, p=0):
     if type(x) == int:
         return unicorn_input.btnp(x, p)
-    return unicorn_input.btnp2(ord(x))
+    return unicorn_input.btnp_raw(ord(x))
 
 
 def mouse_x():

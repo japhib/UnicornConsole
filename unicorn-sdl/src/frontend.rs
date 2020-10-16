@@ -558,9 +558,7 @@ impl Frontend {
                             .lock()
                             .unwrap()
                             .key_down(map_sdlmod(keymod),
-                                      map_sdlscancode(scancode),
-                                      repeat,
-                                      self.uc.info.lock().unwrap().elapsed_time);
+                                      map_sdlscancode(scancode));
 
                         if scancode == Scancode::F2 {
                             self.uc.configuration.lock().unwrap().toggle_info_overlay();
@@ -586,7 +584,7 @@ impl Frontend {
                             self.uc.switch_code();
                         }
 
-                        if self.uc.players.lock().unwrap().get_value_quick(0, 7) == 1 {
+                        if self.uc.players.lock().unwrap().get_value_quick(0, 7) {
                             self.uc.switch_pause();
                         }
                     }
@@ -609,9 +607,7 @@ impl Frontend {
                                 .lock()
                                 .unwrap()
                                 .key_down_direct(0,
-                                                 key,
-                                                 false,
-                                                 self.uc.info.lock().unwrap().elapsed_time)
+                                                 key)
                         }
                     }
 
@@ -642,9 +638,7 @@ impl Frontend {
                                         .lock()
                                         .unwrap()
                                         .key_down_direct(0,
-                                                         key,
-                                                         false,
-                                                         self.uc.info.lock().unwrap().elapsed_time);
+                                                         key);
                                 } else {
                                     self.uc.players.lock().unwrap().key_up_direct(0, key);
                                 }
@@ -669,9 +663,7 @@ impl Frontend {
                                         .lock()
                                         .unwrap()
                                         .key_down_direct(0,
-                                                         key,
-                                                         false,
-                                                         self.uc.info.lock().unwrap().elapsed_time);
+                                                         key);
                                 } else {
                                     self.uc.players.lock().unwrap().key_up_direct(0, key);
                                 }
@@ -690,9 +682,7 @@ impl Frontend {
                                 .lock()
                                 .unwrap()
                                 .key_down_direct(0,
-                                                 key,
-                                                 false,
-                                                 self.uc.info.lock().unwrap().elapsed_time);
+                                                 key);
                         }
                     }
 

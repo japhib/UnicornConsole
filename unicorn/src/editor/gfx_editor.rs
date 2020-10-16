@@ -4,6 +4,8 @@ use std::sync::{Arc, Mutex};
 use std::cmp::{max, min};
 use std::collections::HashMap;
 
+use config::scancode::Scancode;
+
 use unicorn::UnicornConfig;
 
 use unicorn::utils::{Widget, point_in_rect};
@@ -566,15 +568,15 @@ impl SpriteEditor {
     pub fn update(&mut self, players: Arc<Mutex<Players>>, screen: &mut Screen) {
         self.pp.update(screen);
 
-        if players.lock().unwrap().btnp2(1073741948) {
+        if players.lock().unwrap().btnp_raw(Scancode::Copy) {
             self.copy(screen);
         }
 
-        if players.lock().unwrap().btnp2(1073741949) {
+        if players.lock().unwrap().btnp_raw(Scancode::Paste) {
             self.paste(screen);
         }
 
-        if players.lock().unwrap().btnp2(1073741947) {
+        if players.lock().unwrap().btnp_raw(Scancode::Cut) {
             self.cut(screen);
         }
 

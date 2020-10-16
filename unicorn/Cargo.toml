@@ -36,24 +36,25 @@ libksnd = ["chiptune/libksnd"]
 rand = { git = "https://github.com/hallucino/rand.git", branch = "wasm" }
 
 [dependencies]
-regex = "0.2.1"
+backtrace = "0.3.53"
 byteorder = "1.0.0"
-rand = "0.4"
+clippy = {version = "*", optional = true}
+fern = "0.3.5"
+gapbuffer = "0.1.1"
+gif = "0.9.0"
+glob = "0.2.11"
+lazy_static = "0.1.*"
 libc = "0.2.18"
 log = "0.3.6"
-fern = "0.3.5"
+num-traits = "0.1"
+ordered-float = "0.5.0"
+rand = "0.4"
+regex = "0.2.1"
 rusttype = "0.2.1"
-gif = "0.9.0"
-lazy_static = "0.1.*"
 serde = "1"
 serde_derive = "1"
 serde_json = "1"
-num-traits = "0.1"
-glob = "0.2.11"
-clippy = {version = "*", optional = true}
-gapbuffer = "0.1.1"
 unicode-width = "0.1.1"
-ordered-float = "0.5.0"
 
 [target.'cfg(target_os="android")'.dependencies]
 jni = { version = "0.4", default-features = false }
